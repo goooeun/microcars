@@ -1,0 +1,29 @@
+$header-color: #f9f3da;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+
+  .icon {
+    width: 36px;
+    height: 36px;
+    color: $header-color;
+  }
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: $header-color;
+    gap: 16px;
+    &::before,
+    &::after {
+      content: "";
+      background-color: $header-color;
+      width: 120px;
+      height: 2px;
+    }
+  }
+}
