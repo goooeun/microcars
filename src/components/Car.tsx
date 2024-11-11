@@ -1,4 +1,5 @@
 import { ICar } from "../types/Car";
+import Button from "./Button";
 import "./Car.scss";
 
 type Props = {
@@ -24,6 +25,7 @@ const Car: React.FC<Props> = ({ car, isActive }) => {
         />
       </div>
       <div className="description">{car.description}</div>
+      <Button title="DISCOVER MORE" />
     </div>
   );
 };
