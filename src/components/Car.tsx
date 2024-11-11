@@ -16,8 +16,12 @@ const Car: React.FC<Props> = ({ car }) => {
         <div className="car-name">
           {car.companyName} {car.name}
         </div>
+        <img
+          className="car-image"
+          src={`/images/${car.imageName}.png`}
+          alt={car.name}
+        />
       </div>
-      <div className={`image-wrapper ${car.imageName}`}></div>
       <div className="description">{car.description}</div>
     </div>
   );
