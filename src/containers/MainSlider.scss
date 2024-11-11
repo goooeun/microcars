@@ -1,0 +1,66 @@
+$main-color: #f9f3da;
+
+.slider-container {
+  width: calc(100vw - 40px);
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.fiat {
+    background: radial-gradient(#8f8c96, #716c7e);
+  }
+  &.bmw {
+    background: radial-gradient(#8b9286, #768d67);
+  }
+  &.volkswangen {
+    background: radial-gradient(#a59783, #877051);
+  }
+  div {
+    width: 100%;
+  }
+  .slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    height: 2px;
+    position: relative;
+    left: 0;
+    &::after {
+      content: "";
+      width: calc(100% - 20px);
+      height: 2px;
+      position: absolute;
+      left: 10px;
+      border-bottom: 2px dashed #f9f3da;
+    }
+    .slick-active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #f9f3da;
+      border-radius: 50%;
+      transition:
+        width 0.1s,
+        height 0.1s;
+    }
+    li {
+      margin: 0;
+    }
+  }
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #f9f3da;
+    border-radius: 50%;
+  }
+}

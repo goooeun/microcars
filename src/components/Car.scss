@@ -1,0 +1,51 @@
+$main-color: #f9f3da;
+$car-images-url: "../../public/images/";
+
+.car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .info {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: "Oswald";
+    color: $main-color;
+    .top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+      line-height: 1;
+      .year {
+        text-align: right;
+      }
+    }
+    .car-name {
+      font-size: 9vw;
+      line-height: 1.5;
+      transform: scaleY(1.5);
+      font-weight: 600;
+    }
+  }
+  .image-wrapper {
+    width: 60%;
+    height: 35vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    &.bmwIsetta {
+      background-image: url($car-images-url + "bmwIsetta.png");
+    }
+    &.fiatCinquecento {
+      background-image: url($car-images-url + "fiatCinquecento.png");
+    }
+    &.volkswagenBeetle {
+      background-image: url($car-images-url + "volkswagenBeetle.png");
+    }
+  }
+  .description {
+    font-size: 1.25rem;
+    color: $main-color;
+    text-align: center;
+  }
+}
