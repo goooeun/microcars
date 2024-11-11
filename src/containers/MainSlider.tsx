@@ -14,17 +14,15 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
   const [activeSlide, setActiveSlide] = useState("fiat");
   const settings = {
     dots: true,
-    Infinity: true,
+    infinity: true,
     fade: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
     nextArrow: <></>,
     prevArrow: <></>,
     appendDots: (dots: any) => <ul className="dot-wrapper">{dots}</ul>,
     customPaging: () => <div className="dot"></div>,
     beforeChange: (current: number, next: number) => {
       const backgroundColor =
-        next === 0 ? "fiat" : next === 1 ? "bmw" : "volkswangen";
+        next === 0 ? "fiat" : next === 1 ? "volkswagen" : "bmw";
       setActiveSlide(backgroundColor);
     },
   };
@@ -32,7 +30,13 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
     <div className={`slider-container ${activeSlide}`}>
       <Slider className="slider" {...settings}>
         {carList.map((car) => {
-          return <Car car={car} key={car.name} />;
+          return (
+            <Car
+              car={car}
+              isActive={car.companyName.toLowerCase() === activeSlide}
+              key={car.name}
+            />
+          );
         })}
       </Slider>
     </div>

@@ -35,10 +35,19 @@ $car-images-url: "../../public/images/";
       top: 8%;
       width: 60vw;
       max-width: 1000px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
       z-index: 5;
+    }
+    .car-image.active {
+      animation: moving 1s;
+    }
+
+    @keyframes moving {
+      from {
+        transform: translateX(-300px);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
   }
   .description {

@@ -13,7 +13,7 @@ $main-color: #f9f3da;
   &.bmw {
     background: radial-gradient(#8b9286, #768d67);
   }
-  &.volkswangen {
+  &.volkswagen {
     background: radial-gradient(#a59783, #877051);
   }
   div {
@@ -26,6 +26,7 @@ $main-color: #f9f3da;
     justify-content: center;
   }
   .slick-dots {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,16 +43,17 @@ $main-color: #f9f3da;
       border-bottom: 2px dashed #f9f3da;
     }
     .slick-active {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #f9f3da;
-      border-radius: 50%;
-      transition:
-        width 0.1s,
-        height 0.1s;
+      &::after {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #f9f3da;
+        border-radius: 50%;
+      }
     }
     li {
       margin: 0;

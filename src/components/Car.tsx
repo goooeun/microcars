@@ -3,9 +3,10 @@ import "./Car.scss";
 
 type Props = {
   car: ICar;
+  isActive: boolean;
 };
 
-const Car: React.FC<Props> = ({ car }) => {
+const Car: React.FC<Props> = ({ car, isActive }) => {
   return (
     <div className="car">
       <div className="info">
@@ -17,7 +18,7 @@ const Car: React.FC<Props> = ({ car }) => {
           {car.companyName} {car.name}
         </div>
         <img
-          className="car-image"
+          className={`car-image ${isActive ? "active" : ""}`}
           src={`/images/${car.imageName}.png`}
           alt={car.name}
         />
