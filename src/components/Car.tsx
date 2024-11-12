@@ -5,9 +5,12 @@ import "./Car.scss";
 type Props = {
   car: ICar;
   isActive: boolean;
+  handleModal: (isOpen: boolean) => void;
 };
 
-const Car: React.FC<Props> = ({ car, isActive }) => {
+const Car: React.FC<Props> = ({ car, isActive, handleModal }) => {
+  const upperCarName = car.name ? car.name.toUpperCase() : "";
+  const upperCompanyName = car.companyName ? car.companyName.toUpperCase() : "";
   return (
     <div className="car">
       <div className="info">
@@ -16,16 +19,16 @@ const Car: React.FC<Props> = ({ car, isActive }) => {
           <div className="year">{car.YearOfProduction}</div>
         </div>
         <div className="car-name">
-          {car.companyName} {car.name}
+          {upperCompanyName} {upperCarName}
         </div>
         <img
           className={`car-image ${isActive ? "active" : ""}`}
-          src={`/images/${car.imageName}.png`}
+          src={`/images/cars/${car.imageName}.png`}
           alt={car.name}
         />
       </div>
-      <div className="description">{car.description}</div>
-      <Button title="DISCOVER MORE" />
+      <div className="description">{car.shortDescription}</div>
+      <Button title="DISCOVER MORE" handleClick={() => handleModal(true)} />
     </div>
   );
 };

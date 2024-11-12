@@ -1,4 +1,4 @@
-$main-color: #f9f3da;
+@import "../styles/mixin";
 $car-images-url: "../../public/images/";
 
 .car {
@@ -9,7 +9,13 @@ $car-images-url: "../../public/images/";
   .info {
     position: relative;
     width: auto;
-    height: 60vh;
+    height: 50vh;
+    @include screen-mobile {
+      height: 40vh;
+    }
+    @include screen-lg {
+      height: 60vh;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +24,12 @@ $car-images-url: "../../public/images/";
     .top {
       display: flex;
       justify-content: space-between;
-      font-size: 2rem;
+      @include screen-mobile {
+        font-size: 1.2em;
+      }
+      @include screen-md {
+        font-size: 3em;
+      }
       line-height: 1;
       .year {
         text-align: right;
@@ -33,7 +44,16 @@ $car-images-url: "../../public/images/";
     .car-image {
       position: absolute;
       top: 8%;
-      width: 60vw;
+      width: 80vh;
+      @include screen-mobile {
+        width: 95vw;
+      }
+      @include screen-sm {
+        width: 50vh;
+      }
+      @include screen-md {
+        width: 70vh;
+      }
       max-width: 1000px;
       z-index: 5;
     }
@@ -51,7 +71,12 @@ $car-images-url: "../../public/images/";
     }
   }
   .description {
-    font-size: 1.25rem;
+    @include screen-mobile {
+      font-size: 1em;
+    }
+    @include screen-md {
+      font-size: 1.25em;
+    }
     color: $main-color;
     text-align: center;
     margin-bottom: 16px;
