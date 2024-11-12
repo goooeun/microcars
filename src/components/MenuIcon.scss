@@ -1,0 +1,43 @@
+@import "../styles/mixin";
+
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 40;
+  .menu-icon {
+    width: 36px;
+    height: 36px;
+    z-index: 30;
+    transition: all 0.5s ease-in-out;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 2px;
+      background-color: $main-color;
+    }
+    &:before {
+      transform: translateY(10px);
+      transition: all 0.5s ease-in-out;
+    }
+    &:after {
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+    &.open {
+      &:before {
+        transform: rotate(-47deg) translate(-7px, 9px);
+        width: 22px;
+        background-color: #000;
+      }
+      &:after {
+        transform: rotate(47deg) translate(18px, -5px);
+        width: 24px;
+        background-color: #000;
+      }
+    }
+  }
+}

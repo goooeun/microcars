@@ -1,13 +1,18 @@
+import MenuIcon from "../components/MenuIcon";
 import "./Header.scss";
-import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-const Header = () => {
+type Props = {
+  handleSideMenu: () => void;
+};
+
+const Header: React.FC<Props> = ({ handleSideMenu }) => {
   return (
-    <div className="header">
-      <Bars3Icon className="icon" />
-      <h3>CLASSIC MICROCARS</h3>
-      <MagnifyingGlassIcon className="icon" />
-    </div>
+    <>
+      <div className="header">
+        <h3>CLASSIC MICROCARS</h3>
+      </div>
+      <MenuIcon handleClick={handleSideMenu} />
+    </>
   );
 };
 

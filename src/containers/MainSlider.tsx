@@ -8,10 +8,11 @@ import { ICar } from "../types/Car";
 import Modal from "../components/Modal";
 
 type Props = {
+  activeSlide: number;
   carList: ICar[];
 };
 
-const MainSlider: React.FC<Props> = ({ carList }) => {
+const MainSlider: React.FC<Props> = ({ activeSlide, carList }) => {
   const settings = {
     initialSlide: 1,
     dots: true,
@@ -25,11 +26,16 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
       setActiveCar(carList[next]);
     },
   };
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [activeCar, setActiveCar] = useState<ICar>(carList[1]);
+  const [activeCar, setActiveCar] = useState<ICar>(carList[activeSlide]);
 
   const sliderRef = useRef<Slider>(null);
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(activeSlide);
+    }
+  }, [activeSlide]);
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   useEffect(() => {
     if (!isModalOpen) {
       window.addEventListener("wheel", handleWheel);
@@ -71,7 +77,6 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
   }
 
   function handleWheel(e: WheelEvent) {
-    console.log(isModalOpen);
     if (e.deltaY > 0) slideToPrevious();
     else slideToNext();
   }
