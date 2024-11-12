@@ -1,4 +1,4 @@
-$header-color: #f9f3da;
+@import "../styles/mixin";
 
 .header {
   display: flex;
@@ -13,23 +13,40 @@ $header-color: #f9f3da;
   .icon {
     width: 36px;
     height: 36px;
-    color: $header-color;
+    color: $main-color;
   }
 
   h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
-    color: $header-color;
+    color: $main-color;
     text-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
     gap: 16px;
+    @include screen-mobile {
+      margin-top: 8px;
+      font-size: 1em;
+    }
+    @include screen-sm {
+      font-size: 1.3em;
+    }
+    @include screen-md {
+      font-size: 1.5em;
+    }
     &::before,
     &::after {
       content: "";
-      background-color: $header-color;
-      width: 120px;
+      background-color: $main-color;
       height: 2px;
+      @include screen-mobile {
+        width: 0px;
+      }
+      @include screen-sm {
+        width: 40px;
+      }
+      @include screen-md {
+        width: 120px;
+      }
     }
   }
 }
