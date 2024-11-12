@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./MainSlider.scss";
 import Car from "../components/Car";
 import { ICar } from "../types/Car";
@@ -13,6 +13,13 @@ type Props = {
 
 const MainSlider: React.FC<Props> = ({ carList }) => {
   const [activeCar, setActiveCar] = useState<ICar>(carList[1]);
+  const sliderRef = useRef<Slider>(null);
+  const next = () => {
+    if (sliderRef.current) sliderRef.current.slickNext();
+  };
+  const previous = () => {
+    if (sliderRef.current) sliderRef.current.slickPrev();
+  };
 
   const settings = {
     initialSlide: 1,
@@ -27,13 +34,23 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
       setActiveCar(carList[next]);
     },
   };
+  const handleWheel = (e: WheelEvent) => {
+    if (e.deltaY > 0) previous();
+    else next();
+  };
+  useEffect(() => {
+    window.addEventListener("wheel", handleWheel);
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
     <>
       <div className={`slider-container ${activeCar.companyName}`}>
-        <Slider className="slider" {...settings}>
+        <Slider className="slider" ref={sliderRef} {...settings}>
           {carList.map((car) => {
             return (
               <Car
