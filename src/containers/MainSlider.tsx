@@ -12,15 +12,6 @@ type Props = {
 };
 
 const MainSlider: React.FC<Props> = ({ carList }) => {
-  const [activeCar, setActiveCar] = useState<ICar>(carList[1]);
-  const sliderRef = useRef<Slider>(null);
-  const next = () => {
-    if (sliderRef.current) sliderRef.current.slickNext();
-  };
-  const previous = () => {
-    if (sliderRef.current) sliderRef.current.slickPrev();
-  };
-
   const settings = {
     initialSlide: 1,
     dots: true,
@@ -34,18 +25,19 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
       setActiveCar(carList[next]);
     },
   };
-  const handleWheel = (e: WheelEvent) => {
-    if (e.deltaY > 0) previous();
-    else next();
-  };
-  useEffect(() => {
-    window.addEventListener("wheel", handleWheel);
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, []);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [activeCar, setActiveCar] = useState<ICar>(carList[1]);
+
+  const sliderRef = useRef<Slider>(null);
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      window.addEventListener("wheel", handleWheel);
+      return () => {
+        window.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, [isModalOpen]);
 
   return (
     <>
@@ -70,6 +62,19 @@ const MainSlider: React.FC<Props> = ({ carList }) => {
       />
     </>
   );
+
+  function slideToNext() {
+    if (sliderRef.current) sliderRef.current.slickNext();
+  }
+  function slideToPrevious() {
+    if (sliderRef.current) sliderRef.current.slickPrev();
+  }
+
+  function handleWheel(e: WheelEvent) {
+    console.log(isModalOpen);
+    if (e.deltaY > 0) slideToPrevious();
+    else slideToNext();
+  }
 };
 
 export default MainSlider;
