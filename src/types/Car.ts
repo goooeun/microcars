@@ -4,5 +4,6 @@ export interface ICar {
     companyName: string;
     countryOfProduction: string;
     YearOfProduction: string;
+    shortDescription: string;
     description: string;
 }
