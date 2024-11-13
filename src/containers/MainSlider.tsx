@@ -43,7 +43,7 @@ const MainSlider: React.FC<Props> = ({ activeSlide, carList }) => {
         window.removeEventListener("wheel", handleWheel);
       };
     }
-  }, [isModalOpen]);
+  });
 
   return (
     <>
