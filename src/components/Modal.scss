@@ -104,6 +104,9 @@
       flex-direction: column;
       gap: 32px;
       max-height: 70vh;
+      .modal-slider {
+        min-height: 30vh;
+      }
       .description {
         overflow-y: auto;
         letter-spacing: -0.225px;
@@ -112,23 +115,5 @@
         }
       }
     }
-  }
-  animation: modal-animation 0.3s ease;
-}
-
-@keyframes modal-animation {
-  from {
-    display: none;
-    top: 50%;
-    left: 50%;
-    width: 0px;
-    height: 0px;
-  }
-  to {
-    display: block;
-    top: 25%;
-    left: 25%;
-    width: 60%;
-    height: 50%;
   }
 }

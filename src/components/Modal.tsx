@@ -40,7 +40,7 @@ const Modal: React.FC<Props> = ({ isOpen, handleModalClose, info }) => {
             </div>
           </div>
           <div className="article">
-            <Slider {...settings}>
+            <Slider className="modal-slider" {...settings}>
               {infoImages.map((image) => {
                 return (
                   <img
